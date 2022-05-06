@@ -23,11 +23,20 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run Integration test cases
         run: |
+          echo ${{ github.event.client_payload.slash_command.command }}
+          echo ${{ github.event.client_payload.slash_command.args.all }}
+          echo ${{ github.event.client_payload.slash_command.args }}
+          echo ${{ github.event.client_payload.slash_command.args.unnamed.all }}
+          echo ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
+          echo ${{ github.event.client_payload.slash_command.args.named.region }}
+          echo ${{ github.event.client_payload.slash_command.args.named.branch }}
+          echo ${{ github.event.client_payload.slash_command.args.named.reason }}
           args="${{ github.event.client_payload.slash_command.args }}"
           flag=""
-          if [ "$args" = "disabled" ]
+          if [ "$args" = "allow-disabled" ]
                       then 
                           $flag="--allow-disabled"
+          fi
           #cd /home/${USER}/.ansible/collections/ansible_collections/${{ env.NAMESPACE }}/${{ env.COLLECTION_NAME }}
           #export NUTANIX_HOST=${{ secrets.PC_IP }}
           #export NUTANIX_PASSWORD=${{ secrets.PC_PASSWORD }}
