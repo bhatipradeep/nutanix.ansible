@@ -21,12 +21,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          pip install -r tests/integration/requirements.txt
       - name: Run Integration test cases
         run: |
-          args = ${{ github.event.client_payload.slash_command.args }}
+          args = "${{ github.event.client_payload.slash_command.args }}"
           #cd /home/${USER}/.ansible/collections/ansible_collections/${{ env.NAMESPACE }}/${{ env.COLLECTION_NAME }}
           #export NUTANIX_HOST=${{ secrets.PC_IP }}
           #export NUTANIX_PASSWORD=${{ secrets.PC_PASSWORD }}
