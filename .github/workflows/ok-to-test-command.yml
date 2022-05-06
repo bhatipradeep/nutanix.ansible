@@ -28,7 +28,7 @@ jobs:
           flag=""
           if [ "$args" = "allow-disabled" ]
                       then 
-                          $flag="--allow-disabled"
+                          flag="--allow-disabled"
           fi
           #cd /home/${USER}/.ansible/collections/ansible_collections/${{ env.NAMESPACE }}/${{ env.COLLECTION_NAME }}
           #export NUTANIX_HOST=${{ secrets.PC_IP }}
